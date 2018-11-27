@@ -9,6 +9,7 @@ import edu.wpi.first.wpilibj.PowerDistributionPanel;
 import edu.wpi.first.wpilibj.SpeedControllerGroup;
 import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.Victor;
+import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
@@ -31,6 +32,8 @@ public class Robot extends IterativeRobot {
 	Victor wing   =   new Victor(3);//color
 	
 	SpeedControllerGroup wrist = new SpeedControllerGroup(Wictor,Ving);
+	DifferentialDrive mdrive = new DifferentialDrive(wing,wing);
+	
 
 	@Override
 	public void robotInit() {
@@ -119,7 +122,6 @@ public class Robot extends IterativeRobot {
 		}
 		
 		double bodyspin = gamingController.getRawAxis(0);
-		
+		mdrive.tankDrive(bodyspin,bodyspin);
 	}
 }
-
