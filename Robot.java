@@ -69,6 +69,10 @@ public class Robot extends IterativeRobot {
 	}
 
 	public void testPeriodic() {
+				
+		double bodyspin = gamingController.getRawAxis(0);
+		mdrive.tankDrive(bodyspin,bodyspin);
+
 		boolean solenoidin = gamingController.getRawButton(1);
 		boolean solenoidout = gamingController.getRawButton(2);
 		if (!solenoidin && solenoidout) {
@@ -120,8 +124,6 @@ public class Robot extends IterativeRobot {
 		else if(wristup && wristdown) {
 			wrist.set(0);
 		}
-		
-		double bodyspin = gamingController.getRawAxis(0);
-		mdrive.tankDrive(bodyspin,bodyspin);
+
 	}
 }
